@@ -1,0 +1,36 @@
+﻿<div class="container">
+    <h1>Список пользователей</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let u of users">
+                <ng-template [ngIf]="user?.id != u.id" [ngIfElse]="">
+                    <td>{{u?.id}}</td>
+                    <td>{{u?.name}}</td>
+                    <td><input type="checkbox" [checked]="u.active" (click)="changeStatus(u)" /></td>
+                </ng-template>
+            </tr>
+        </tbody>
+    </table>
+    <button class="btn btn-info" data-toggle="modal" data-target="#myModal" (click)="setUsers()">Total</button>
+    <div id="myModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal">х</button>
+                    <h4 class="modal-title">User info...</h4>
+                </div>
+                <div class="modal-body">
+                    <h5>Total users: {{total}}</h5>
+                    <h5>Active users: {{active}}</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

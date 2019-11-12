@@ -1,0 +1,30 @@
+﻿@*@model IEnumerable<User>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>The table of users</h2>
+
+@using (Html.BeginForm("CheckData", "Home", FormMethod.Post))
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (User user in Model)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.Name</td>
+                    <td><input type="checkbox" checked="@user.Active" /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+<input type="submit" class="btn btn-success" value="Total" />*@
